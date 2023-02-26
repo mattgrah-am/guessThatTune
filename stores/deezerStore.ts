@@ -8,8 +8,10 @@ interface ArtistLists {
 
 interface TrackList {
   artist: string | undefined;
+  playable: boolean;
   tracks: Tracks[];
 }
+
 interface Tracks {
   title: undefined;
   cover: undefined;
@@ -28,6 +30,7 @@ export const useDeezerStore = defineStore("counter", () => {
   ]);
   const tracklist = ref<TrackList>({
     artist: undefined,
+    playable: false,
     tracks: [
       {
         title: undefined,
@@ -50,62 +53,55 @@ export const useDeezerStore = defineStore("counter", () => {
   const trackNumber = ref(0);
   const score = ref(0);
 
-  const getArtistList = (artist: string) => {
-    useFetch(`${api}/search/?q=${artist}`)
-      .then((response) => {
-        artistList.value = response.data;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  const getArtistList = async (artist: string) => {
+    const { data, error } = await useFetch(`${api}/search/?q=${artist}`);
+    if (error.value) console.error("Error:", error.value);
+    artistList.value = data.value as ArtistLists[];
   };
 
-  const getTrackList = (
+  const getTrackList = async (
     tracks: string | undefined,
     artist: string | undefined
   ) => {
-    useFetch(`${api}/tracklist/?q=${tracks}&n=${artist}`)
-      .then((response) => {
-        tracklist.value = response.data;
-        playableGame.value = response.data.playable;
-        const gameSongs: Tracks[] = [];
-        const songs: string[] = [];
-        let trackCounter = 10;
-        while (trackCounter > 0) {
-          gameSongs.push(
-            ...tracklist.value.tracks.splice(
-              Math.floor(Math.random() * tracklist.value.tracks.length),
-              1
-            )
-          );
-          trackCounter--;
+    const { data, error } = await useFetch(
+      `${api}/tracklist/?q=${tracks}&n=${artist}`
+    );
+    if (error.value) console.error("Error:", error.value);
+    tracklist.value = data.value as TrackList;
+    playableGame.value = tracklist.value.playable;
+    const gameSongs: Tracks[] = [];
+    const songs: string[] = [];
+    let trackCounter = 10;
+    while (trackCounter > 0) {
+      gameSongs.push(
+        ...tracklist.value.tracks.splice(
+          Math.floor(Math.random() * tracklist.value.tracks.length),
+          1
+        )
+      );
+      trackCounter--;
+    }
+    gameSongs.forEach((track: Tracks) => songs.push(track.title!));
+    trackCounter = 10;
+    let songList = [...new Set(songs)];
+    while (trackCounter > 0) {
+      gameSongs.forEach((track: Tracks) => {
+        track["songs"] = [];
+        if (songList.includes(track.title!)) {
+          track.songs.push(track.title!);
+          songList.splice(songList.indexOf(track.title!), 1);
+          while (track.songs.length < 4) {
+            track.songs.push(
+              songList.splice(Math.floor(Math.random() * songList.length), 1)[0]
+            );
+          }
+          track.songs.sort(() => (Math.random() > 0.5 ? 1 : -1));
+          songList = [...new Set(songs)];
         }
-        gameSongs.forEach((track: Tracks) => songs.push(track.title!));
-        trackCounter = 10;
-        let songList = [...new Set(songs)];
-        while (trackCounter > 0) {
-          gameSongs.forEach((track: Tracks) => {
-            track["songs"] = [];
-            if (songList.includes(track.title!)) {
-              track.songs.push(track.title!);
-              songList.splice(songList.indexOf(track.title!), 1);
-              while (track.songs.length < 4) {
-                track.songs.push(
-                  songList.splice(
-                    Math.floor(Math.random() * songList.length),
-                    1
-                  )[0]
-                );
-              }
-              track.songs.sort(() => (Math.random() > 0.5 ? 1 : -1));
-              songList = [...new Set(songs)];
-            }
-          });
-          trackCounter--;
-        }
-        gameTracks.value = gameSongs;
-      })
-      .catch((error) => {});
+      });
+      trackCounter--;
+    }
+    gameTracks.value = gameSongs;
   };
 
   return {

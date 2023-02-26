@@ -9,9 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { useDeezerStore } from "../stores/deezerStore";
-import ArtistList from "./ArtistList.vue";
 
 const store = useDeezerStore();
 const artist = ref<string | undefined>("");

@@ -39,9 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDeezerStore } from "../stores/deezerStore";
-import LoadingIcon from "./icons/LoadingIcon.vue";
 
 const store = useDeezerStore();
 const artistInput = ref("");

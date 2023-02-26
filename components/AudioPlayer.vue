@@ -48,12 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, watchEffect } from "vue";
 import { useDeezerStore } from "../stores/deezerStore";
-import PlayIcon from "./icons/PlayIcon.vue";
-import PauseIcon from "./icons/PauseIcon.vue";
-import SpeakerIcon from "./icons/SpeakerIcon.vue";
-import MuteIcon from "./icons/MuteIcon.vue";
 
 const store = useDeezerStore();
 const playStatus = ref(true);

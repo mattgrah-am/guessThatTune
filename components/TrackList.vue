@@ -24,9 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDeezerStore } from "../stores/deezerStore";
-import AudioPlayer from "./AudioPlayer.vue";
 
 const store = useDeezerStore();
 const songs = store.gameTracks;

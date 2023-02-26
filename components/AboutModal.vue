@@ -48,7 +48,7 @@
             </a>
             You can learn more and review the full source code on
             <a
-              href="https://github.com/mattgrah-am/iknowthatsong-vue"
+              href="https://github.com/mattgrah-am/guessThatTune"
               target="_blank"
               rel="noreferrer"
               underline="hover"
@@ -101,14 +101,14 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   show: Boolean,
 });
 
 const websiteLinks = [
   {
-    name: "Vue JS",
-    url: "https://vuejs.org/",
+    name: "Nuxt 3",
+    url: "https://nuxt.com/",
   },
   {
     name: "Typescript",
@@ -123,8 +123,8 @@ const websiteLinks = [
     url: "https://pinia.vuejs.org/",
   },
   {
-    name: "Cloudflare Workers",
-    url: "https://workers.cloudflare.com/",
+    name: "Cloudflare Pages",
+    url: "https://pages.cloudflare.com/",
   },
 ];
 
