@@ -1,42 +1,27 @@
-# Nuxt 3 Minimal Starter
+# Guess That Song
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## about
 
-## Setup
+A simple web app that allows the end user to search for an artist or band, which in turn generates a set of multiple choice questions where the end user is to guess the song whilst a short 30sec music clip is played. If the user guesses correctly the name of the song is highlighted green, if the user selects incorrectly the name of the selected guess is highlighted red. At the end the web app will tell the end user how they did.
 
-Make sure to install the dependencies:
+## development
 
-```bash
-# yarn
-yarn install
+This project is using a Vue Js with Vite and uses Cloudflare workers to complete API calls to Deezer.
 
-# npm
-npm install
+Auto install all dependencies for client and server:
+`npm install`
 
-# pnpm
-pnpm install
-```
+Run a development server for React and an Express Back end with nodemon auto re-start and ts-node
+`npm run dev`
 
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
+Head to `localhost:3000` for development.
 
 ## Production
 
-Build the application for production:
+Auto install all dependencies for client and server:
 
-```bash
-npm run build
-```
+`npm install`
 
-Locally preview production build:
+Build a production Nuxt App
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`npm run build`
