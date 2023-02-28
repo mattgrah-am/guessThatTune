@@ -20,7 +20,6 @@ interface Tracks {
 }
 
 export const useDeezerStore = defineStore("counter", () => {
-  const api = `https://api.mattgrah.am`;
   const artistList = ref<ArtistLists[]>([
     {
       name: undefined,
@@ -54,8 +53,8 @@ export const useDeezerStore = defineStore("counter", () => {
   const score = ref(0);
 
   const getArtistList = async (artist: string) => {
-    const { data, error } = await useFetch(`${api}/search/?q=${artist}`);
-    if (error.value) console.error("Error:", error.value);
+    const { data, error } = await useFetch(`/api/search/?q=${artist}`);
+    if (error.value) console.error("Error:", error.value); // TODO: update error handling
     artistList.value = data.value as ArtistLists[];
   };
 
@@ -64,9 +63,9 @@ export const useDeezerStore = defineStore("counter", () => {
     artist: string | undefined
   ) => {
     const { data, error } = await useFetch(
-      `${api}/tracklist/?q=${tracks}&n=${artist}`
+      `/api/tracklist/?q=${tracks}&n=${artist}`
     );
-    if (error.value) console.error("Error:", error.value);
+    if (error.value) console.error("Error:", error.value); // TODO: update error handling
     tracklist.value = data.value as TrackList;
     playableGame.value = tracklist.value.playable;
     const gameSongs: Tracks[] = [];
