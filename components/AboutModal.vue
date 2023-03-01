@@ -8,7 +8,7 @@
           <h3
             class="header py-4 text-center text-5xl font-bold uppercase tracking-tight"
           >
-            Guess that Song!
+            Guess that Tune!
           </h3>
           <p class="text-sm">
             Originally created as part of
