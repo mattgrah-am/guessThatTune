@@ -40,7 +40,7 @@
               underline="hover"
             >
               <img
-                src="/src/assets/img/deezer.png"
+                src="~/assets/img/deezer.png"
                 alt="Deezer"
                 class="inline w-16"
               />
