@@ -22,7 +22,12 @@
         <div
           v-show="isLoaded"
           class="my-2 flex cursor-pointer items-center gap-4 rounded-lg border border-neutral-400 bg-neutral-100/70 hover:bg-transparent md:hover:bg-neutral-400/50"
-          @click="selectArtistBand(artist.tracklist, artist.name)"
+          @click="
+            () => {
+              selectArtistBand(artist.tracklist, artist.name);
+              store.artistImg = artist.picture;
+            }
+          "
           :key="artist.name"
         >
           <img

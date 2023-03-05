@@ -39,6 +39,7 @@ export const useDeezerStore = defineStore("counter", () => {
       },
     ],
   });
+  const artistImg = ref<string | undefined>(undefined);
   const playableGame = ref(true);
   const gameTracks = ref<Tracks[] | []>([
     {
@@ -105,6 +106,7 @@ export const useDeezerStore = defineStore("counter", () => {
 
   return {
     artistList,
+    artistImg,
     tracklist,
     gameTracks,
     trackNumber,
