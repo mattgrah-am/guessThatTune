@@ -10,7 +10,7 @@
   </audio>
   <div class="flex flex-col items-center">
     <h2
-      class="mb-2 flex w-full justify-between rounded-lg bg-neutral-900 px-8 py-1 text-center text-xl font-bold text-neutral-100 sm:py-2"
+      class="mb-2 flex w-full justify-between rounded-lg bg-neutral-900 px-4 text-center text-xl font-bold text-neutral-100 sm:py-2"
     >
       {{ store.tracklist.artist }}
       <span class="text pl-4 text-sm font-normal"
@@ -86,7 +86,6 @@ const muteAudio = () => {
   ) as HTMLAudioElement;
   audio.muted = !volumeStatus.value;
   !volumeStatus.value ? (volume.value = 0) : (volume.value = currentVolume);
-  console.log(currentVolume);
 };
 watchEffect(() => {
   if (props.clicked) toggleAudio();
