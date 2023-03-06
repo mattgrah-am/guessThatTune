@@ -2,7 +2,7 @@
   <div>
     <p class="pb-4 text-sm">
       Unfortunately <strong>{{ artist }} </strong> does not have enough preview
-      tracks to play this game, try again.
+      tracks to play this game, please search for different artist or band.
     </p>
     <ArtistList />
   </div>

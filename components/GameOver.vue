@@ -27,12 +27,14 @@ const store = useDeezerStore();
 const score = store.score;
 const artist = store.tracklist.artist;
 const artistImg = store.artistImg;
-console.log(artistImg);
 const response = computed(() => {
-  if (score >= 8) return `Outstanding! You scored ${score} out of 10`;
-  else if (score >= 5) return `Great work! You scored ${score} out of 10`;
-  else if (score > 1) return `Not Bad... You scored ${score} out of 10`;
-  else return `Unlucky... You scored ${score} out of 10`;
+  score >= 8
+    ? `Outstanding! You scored ${score} out of 10`
+    : score >= 5
+    ? `Great work! You scored ${score} out of 10`
+    : score > 1
+    ? `Not Bad... You scored ${score} out of 10`
+    : `Unlucky... You scored ${score} out of 10`;
 });
 
 store.artistList = [];
