@@ -92,7 +92,6 @@ watchEffect(() => {
 });
 
 watchEffect(() => {
-  const preview = props.preview;
   player.value?.load();
   toggleAudio();
 });
