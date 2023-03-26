@@ -12,7 +12,7 @@
         {{ artist }}
       </h2>
       <div class="pb-1">
-        <p class="text-sm">{{ response }}.</p>
+        <p class="text-sm">{{ response }}</p>
         <p class="text-sm">Do you want to play again?</p>
       </div>
     </div>
@@ -27,15 +27,14 @@ const store = useDeezerStore();
 const score = store.score;
 const artist = store.tracklist.artist;
 const artistImg = store.artistImg;
-const response = computed(() => {
+const response =
   score >= 8
-    ? `Outstanding! You scored ${score} out of 10`
+    ? `Outstanding! You scored ${score} out of 10.`
     : score >= 5
-    ? `Great work! You scored ${score} out of 10`
+    ? `Great work! You scored ${score} out of 10.`
     : score > 1
-    ? `Not Bad... You scored ${score} out of 10`
-    : `Unlucky... You scored ${score} out of 10`;
-});
+    ? `Not Bad... You scored ${score} out of 10.`
+    : `Unlucky... You scored ${score} out of 10.`;
 
 store.artistList = [];
 store.tracklist = {

@@ -1,11 +1,11 @@
 <template>
   <audio
     ref="player"
-    :id="String(props.index)"
+    :id="String(store.trackNumber)"
     controls
     class="hidden rounded-b-lg"
   >
-    <source :src="props.preview" type="audio/mpeg" />
+    <source :src="store.currentSong" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
   <div class="flex flex-col items-center">
@@ -19,7 +19,7 @@
       >
     </h2>
     <img
-      :src="props.cover"
+      :src="store.currentCover"
       alt="Album Art"
       class="w-3/4 rounded-lg border border-neutral-300 sm:w-full"
     />
@@ -58,9 +58,6 @@ const player = ref<HTMLAudioElement | null>(null);
 let currentVolume = 0;
 
 const props = defineProps<{
-  preview: string | undefined;
-  cover: string | undefined;
-  index: number | undefined;
   clicked: boolean;
 }>();
 
@@ -71,7 +68,7 @@ const toggleAudio = () => {
 
 const volumeAdjust = () => {
   const audio = document.getElementById(
-    String(props.index)
+    String(store.trackNumber)
   ) as HTMLAudioElement;
   audio.volume = volume.value / 100;
 };
@@ -82,18 +79,18 @@ const muteAudio = () => {
     currentVolume = volume.value;
   }
   const audio = document.getElementById(
-    String(props.index)
+    String(store.trackNumber)
   ) as HTMLAudioElement;
   audio.muted = !volumeStatus.value;
   !volumeStatus.value ? (volume.value = 0) : (volume.value = currentVolume);
 };
-watchEffect(() => {
-  if (props.clicked) toggleAudio();
-});
 
 watchEffect(() => {
-  player.value?.load();
-  toggleAudio();
+  if (props.clicked) toggleAudio();
+  if (!props.clicked) {
+    player.value?.load();
+    toggleAudio();
+  }
 });
 </script>
 
