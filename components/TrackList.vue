@@ -1,10 +1,5 @@
 <template>
-  <AudioPlayer
-    :preview="songs[store.trackNumber].preview"
-    :cover="songs[store.trackNumber].cover"
-    :index="store.trackNumber"
-    :clicked="clicked"
-  />
+  <AudioPlayer :clicked="clicked" />
   <div v-for="song in songs[store.trackNumber].songs">
     <button
       @click="nextSong(song)"

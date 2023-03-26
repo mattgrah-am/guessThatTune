@@ -53,6 +53,13 @@ export const useDeezerStore = defineStore("counter", () => {
   const trackNumber = ref(0);
   const score = ref(0);
 
+  const currentSong = computed(
+    () => gameTracks.value[trackNumber.value].preview
+  );
+  const currentCover = computed(
+    () => gameTracks.value[trackNumber.value].cover
+  );
+
   const getArtistList = async (artist: string) => {
     const { data, error } = await useFetch(`/api/search/?q=${artist}`);
     if (error.value) console.error("Error:", error.value); // TODO: update error handling
@@ -111,6 +118,8 @@ export const useDeezerStore = defineStore("counter", () => {
     gameTracks,
     trackNumber,
     score,
+    currentSong,
+    currentCover,
     playableGame,
     getArtistList,
     getTrackList,
