@@ -3,20 +3,14 @@
     <TheHeader />
     <UnplayableGame v-if="store.playableGame === false" />
     <GameOver v-if="store.trackNumber === 10" />
-    <ArtistList
-      v-if="
-        store.playableGame === true &&
-        store.tracklist.tracks.length < 10 &&
-        store.trackNumber !== 10
-      "
-    />
-    <TrackList
-      v-if="
-        store.playableGame === true &&
-        store.tracklist.tracks.length > 1 &&
-        store.trackNumber !== 10
-      "
-    />
+    <ArtistList v-if="store.playableGame === true &&
+      store.tracklist.tracks.length < 10 &&
+      store.trackNumber !== 10
+      " />
+    <TrackList v-if="store.playableGame === true &&
+      store.tracklist.tracks.length > 1 &&
+      store.trackNumber !== 10
+      " />
     <TheFooter />
   </div>
 </template>

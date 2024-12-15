@@ -1,28 +1,16 @@
 <template>
-  <audio
-    ref="player"
-    :id="String(store.trackNumber)"
-    controls
-    class="hidden rounded-b-lg"
-  >
+  <audio ref="player" :id="String(store.trackNumber)" controls class="hidden rounded-b-lg">
     <source :src="store.currentSong" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
   <div class="flex flex-col items-center">
     <h2
-      class="mb-2 flex w-full justify-between rounded-lg bg-neutral-900 px-4 text-center text-xl font-bold text-neutral-100 sm:py-2"
-    >
+      class="mb-2 flex w-full justify-between rounded-lg bg-neutral-900 px-4 text-center text-xl font-bold text-neutral-100 sm:py-2">
       {{ store.tracklist.artist }}
-      <span class="text pl-4 text-sm font-normal"
-        >score:
-        <span class="pl-1 text-lg font-bold">{{ store.score }}</span></span
-      >
+      <span class="text pl-4 text-sm font-normal">score:
+        <span class="pl-1 text-lg font-bold">{{ store.score }}</span></span>
     </h2>
-    <img
-      :src="store.currentCover"
-      alt="Album Art"
-      class="w-3/4 rounded-lg border border-neutral-300 sm:w-full"
-    />
+    <img :src="store.currentCover" alt="Album Art" class="w-3/4 rounded-lg border border-neutral-300 sm:w-full" />
   </div>
 
   <div class="flex items-center justify-between px-2 py-4">
@@ -35,14 +23,8 @@
         <SpeakerIcon v-if="volumeStatus" />
         <MuteIcon v-if="!volumeStatus" />
       </button>
-      <input
-        class="m-2 h-1 w-24 appearance-none rounded-full bg-neutral-900"
-        type="range"
-        min="1"
-        max="100"
-        v-model="volume"
-        @change="volumeAdjust"
-      />
+      <input class="m-2 h-1 w-24 appearance-none rounded-full bg-neutral-900" type="range" min="1" max="100"
+        v-model="volume" @change="volumeAdjust" />
     </div>
   </div>
 </template>

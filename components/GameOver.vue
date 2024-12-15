@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="mb-2 flex w-full gap-3 rounded-lg bg-neutral-900 p-2 text-neutral-100"
-  >
-    <img
-      :src="artistImg"
-      :alt="`${artist} band picture`"
-      class="rounded h-full"
-    />
-    <div class="flex flex-col justify-between">
+  <div class="mb-2 flex w-full gap-3 rounded-lg bg-neutral-900 p-2 text-neutral-100">
+    <img :src="artistImg" :alt="`${artist} band picture`" class="rounded h-full" />
+    <div class="flex flex-col justify-between ">
       <h2 class="text-xl font-bold pb-2">
         {{ artist }}
       </h2>
@@ -31,10 +25,10 @@ const response =
   score >= 8
     ? `Outstanding! You scored ${score} out of 10.`
     : score >= 5
-    ? `Great work! You scored ${score} out of 10.`
-    : score > 1
-    ? `Not Bad... You scored ${score} out of 10.`
-    : `Unlucky... You scored ${score} out of 10.`;
+      ? `Great work! You scored ${score} out of 10.`
+      : score > 1
+        ? `Not Bad... You scored ${score} out of 10.`
+        : `Unlucky... You scored ${score} out of 10.`;
 
 store.artistList = [];
 store.tracklist = {

@@ -3,12 +3,11 @@
     <div class="mt-2 flex items-center justify-center text-xs">
       Created with 🖤 by&nbsp;
       <a
-        href="https://www.mattgrah.am"
+        href="https://www.matg.dev"
         target="_blank"
         rel="noreferrer"
-        class="text-neutral-500 hover:underline hover:underline-offset-2"
-      >
-        mattgrah.am
+        class="text-neutral-500 hover:underline hover:underline-offset-2">
+        matg.dev
       </a>
       &nbsp;using&nbsp;
       <a href="https://developers.deezer.com/" target="_blank" rel="noreferrer">
@@ -19,8 +18,7 @@
     <button
       id="show-modal"
       @click="showModal = true"
-      class="w-full text-xs text-neutral-500 hover:underline hover:underline-offset-2"
-    >
+      class="w-full text-xs text-neutral-500 hover:underline hover:underline-offset-2">
       Learn more about this web app.
     </button>
 

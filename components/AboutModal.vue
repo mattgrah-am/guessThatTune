@@ -3,11 +3,9 @@
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
         <div
-          class="modal-container w-screen bg-neutral-100/90 p-4 shadow sm:w-[440px] sm:rounded-lg"
-        >
+          class="modal-container w-screen bg-neutral-100/90 p-4 shadow sm:w-[440px] sm:rounded-lg">
           <h3
-            class="header py-4 text-center text-5xl font-bold uppercase tracking-tight"
-          >
+            class="header py-4 text-center text-5xl font-bold uppercase tracking-tight">
             Guess that Tune!
           </h3>
           <p class="text-sm">
@@ -16,8 +14,7 @@
               href="https://generalassemb.ly/education/software-engineering-immersive-remote-flex"
               target="_blank"
               rel="noreferrer"
-              class="text-neutral-500 hover:underline hover:underline-offset-2"
-            >
+              class="text-neutral-500 hover:underline hover:underline-offset-2">
               General Assembly's Software Engineering Immersive Online (Flex)
             </a>
             course's final project using React, Express and Node JS, this
@@ -27,8 +24,7 @@
                 class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
                 :href="link.url"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 {{ link.name }},
               </a>
             </span>
@@ -37,13 +33,11 @@
               href="https://developers.deezer.com/"
               target="_blank"
               rel="noreferrer"
-              underline="hover"
-            >
+              underline="hover">
               <img
                 src="~/assets/img/deezer.png"
                 alt="Deezer"
-                class="inline w-16"
-              />
+                class="inline w-16" />
               API.
             </a>
             You can learn more and review the full source code on
@@ -52,8 +46,7 @@
               target="_blank"
               rel="noreferrer"
               underline="hover"
-              class="text-neutral-500 hover:underline hover:underline-offset-2"
-            >
+              class="text-neutral-500 hover:underline hover:underline-offset-2">
               Github
             </a>
             .
@@ -74,24 +67,21 @@
               class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
               :href="link.url"
               target="_blank"
-              rel="noreferrer"
-            >
+              rel="noreferrer">
               {{ link.name }}
             </a>
             &nbsp;|&nbsp;
           </span>
           <a
             class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
-            href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%69%61%6D%40%6D%61%74%74%67%72%61%68%2E%61%6D?subject=Mail from www.mattgrah.am"
+            href="mailto:%69%61%6D%40%6D%61%74%74%67%72%61%68%2E%61%6D?subject=Message from matg.dev website"
             target="_blank"
-            rel="noreferrer"
-          >
+            rel="noreferrer">
             Email
           </a>
           <button
             class="m-auto mt-4 flex rounded bg-neutral-500 px-8 py-2 text-sm font-bold uppercase text-neutral-100 hover:bg-neutral-900"
-            @click="$emit('close')"
-          >
+            @click="$emit('close')">
             Close
           </button>
         </div>
@@ -131,7 +121,7 @@ const websiteLinks = [
 const authorLinks = [
   {
     name: "Website",
-    url: "https://www.mattgrah.am",
+    url: "https://www.matg.dev",
   },
   {
     name: "Github",
