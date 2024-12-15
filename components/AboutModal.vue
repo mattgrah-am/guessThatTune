@@ -74,7 +74,7 @@
           </span>
           <a
             class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
-            href="mailto:%69%61%6D%40%6D%61%74%74%67%72%61%68%2E%61%6D?subject=Message from matg.dev website"
+            href="ma&#105;l&#116;o&#58;ma&#105;l&#64;%6D&#97;t&#103;&#37;2E%64&#101;&#118;?subject=Message from matg.dev website"
             target="_blank"
             rel="noreferrer">
             Email
