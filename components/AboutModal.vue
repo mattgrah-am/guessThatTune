@@ -59,26 +59,7 @@
             is highlighted green, if the user selects incorrectly the name of
             the selected guess is highlighted red.
           </p>
-          <h3 class="mt-2 border-t border-neutral-500 pt-2 text-sm font-bold">
-            Learn more about the creator
-          </h3>
-          <span v-for="link in authorLinks">
-            <a
-              class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
-              :href="link.url"
-              target="_blank"
-              rel="noreferrer">
-              {{ link.name }}
-            </a>
-            &nbsp;|&nbsp;
-          </span>
-          <a
-            class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
-            href="ma&#105;l&#116;o&#58;ma&#105;l&#64;%6D&#97;t&#103;&#37;2E%64&#101;&#118;?subject=Message from matg.dev website"
-            target="_blank"
-            rel="noreferrer">
-            Email
-          </a>
+
           <button
             class="m-auto mt-4 flex rounded bg-neutral-500 px-8 py-2 text-sm font-bold uppercase text-neutral-100 hover:bg-neutral-900"
             @click="$emit('close')">
