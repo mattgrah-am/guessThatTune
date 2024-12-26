@@ -59,7 +59,6 @@
             is highlighted green, if the user selects incorrectly the name of
             the selected guess is highlighted red.
           </p>
-
           <button
             class="m-auto mt-4 flex rounded bg-neutral-500 px-8 py-2 text-sm font-bold uppercase text-neutral-100 hover:bg-neutral-900"
             @click="$emit('close')">
