@@ -5,6 +5,27 @@ export default defineNuxtConfig({
   components: [{ path: "~/components", pathPrefix: false }],
   app: {
     head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=VT323&display=swap",
+        },
+        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon-96x96.png",
+          sizes: "96x96",
+        },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "shortcut icon", href: "/favicon.ico" },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
+        { rel: "manifest", href: "/site.webmanifest" },
+      ],
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
@@ -53,13 +74,7 @@ export default defineNuxtConfig({
           name: "twitter:image",
           content: "https://guessthattune.com/og-image.png",
         },
-      ],
-      link: [
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=VT323&display=swap",
-        },
-        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { name: "apple-mobile-web-app-title", content: "Guess that Tune" },
       ],
     },
   },
