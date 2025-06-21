@@ -48,7 +48,8 @@ Songs are played randomly from the artist's discography, ensuring a fresh experi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/guessThatTune.git
+   git clone https://github.com/mattgrah-am/guessThatTune.git
+   ```
    cd guessThatTune
    ```
 

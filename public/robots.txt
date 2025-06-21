@@ -1,0 +1,7 @@
+guessThatTune/public/robots.txt
+# robots.txt for Guess That Tune
+
+User-agent: *
+Allow: /
+
+Sitemap: /sitemap.xml
