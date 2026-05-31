@@ -1,7 +1,13 @@
 <template>
-  <div class="mb-2 flex w-full gap-3 rounded-lg bg-neutral-900 p-2 text-neutral-100">
-    <img :src="artistImg" :alt="`${artist} band picture`" class="rounded h-full" />
-    <div class="flex flex-col justify-between ">
+  <div
+    class="mb-2 flex w-full gap-3 rounded-lg bg-neutral-900 p-2 text-neutral-100"
+  >
+    <img
+      :src="artistImg"
+      :alt="`${artist} band picture`"
+      class="rounded h-full"
+    />
+    <div class="flex flex-col justify-between">
       <h2 class="text-xl font-bold pb-2">
         {{ artist }}
       </h2>
@@ -15,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDeezerStore } from "../stores/deezerStore";
+import { useDeezerStore } from '../stores/deezerStore';
 
 const store = useDeezerStore();
 const score = store.score;

@@ -14,14 +14,14 @@ interface DeezerArtistData {
   type: string;
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async event => {
   const search = getQuery(event);
   const searchParams = search.q;
-  const deezerSearchApi = "https://api.deezer.com/search/artist/?q=";
+  const deezerSearchApi = 'https://api.deezer.com/search/artist/?q=';
   const { data, error } = await $fetch<{
     data: DeezerArtistData[];
     error: string;
   }>(`${deezerSearchApi}${searchParams}&limit=4`);
-  if (error) console.error("Error:", error); // TODO: update error handling
+  if (error) console.error('Error:', error); // TODO: update error handling
   return data;
 });

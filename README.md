@@ -47,18 +47,25 @@ Songs are played randomly from the artist's discography, ensuring a fresh experi
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/mattgrah-am/guessThatTune.git
    ```
+
    cd guessThatTune
+
+   ```
+
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Run the development server:
+
    ```bash
    npm run dev
    ```
@@ -91,11 +98,13 @@ The project structure follows Nuxt 3 conventions:
 ### Commands
 
 - **Development server**:
+
   ```bash
   npm run dev
   ```
 
 - **Build for production**:
+
   ```bash
   npm run build
   ```
@@ -117,6 +126,7 @@ The application uses Cloudflare Workers to proxy requests to the Deezer API, avo
 ### Production Build
 
 1. Create a production build:
+
    ```bash
    npm run build
    ```

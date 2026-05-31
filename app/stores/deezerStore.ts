@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
 interface ArtistLists {
   name: string | undefined;
@@ -19,7 +19,7 @@ interface Tracks {
   songs: string[];
 }
 
-export const useDeezerStore = defineStore("counter", () => {
+export const useDeezerStore = defineStore('counter', () => {
   const artistList = ref<ArtistLists[]>([
     {
       name: undefined,
@@ -62,7 +62,7 @@ export const useDeezerStore = defineStore("counter", () => {
 
   const getArtistList = async (artist: string) => {
     const { data, error } = await useFetch(`/api/search/?q=${artist}`);
-    if (error.value) console.error("Error:", error.value); // TODO: update error handling
+    if (error.value) console.error('Error:', error.value); // TODO: update error handling
     artistList.value = data.value as ArtistLists[];
   };
 
@@ -73,7 +73,7 @@ export const useDeezerStore = defineStore("counter", () => {
     const { data, error } = await useFetch(
       `/api/tracklist/?q=${tracks}&n=${artist}`
     );
-    if (error.value) console.error("Error:", error.value); // TODO: update error handling
+    if (error.value) console.error('Error:', error.value); // TODO: update error handling
     tracklist.value = data.value as TrackList;
     playableGame.value = tracklist.value.playable;
     const gameSongs: Tracks[] = [];
@@ -93,7 +93,7 @@ export const useDeezerStore = defineStore("counter", () => {
     let songList = [...new Set(songs)];
     while (trackCounter > 0) {
       gameSongs.forEach((track: Tracks) => {
-        track["songs"] = [];
+        track['songs'] = [];
         if (songList.includes(track.title!)) {
           track.songs.push(track.title!);
           songList.splice(songList.indexOf(track.title!), 1);

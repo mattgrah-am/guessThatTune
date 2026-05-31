@@ -29,21 +29,21 @@ interface DeezerTrackData {
   type: string;
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async event => {
   const search = getQuery(event);
   const trackAPI = search.q;
   const artist = search.n;
   let playable = true;
-  let error = "";
+  let error = '';
   const tracks: any = [];
   const { data, responseError } = await $fetch<{
     data: DeezerTrackData[];
     responseError: string;
   }>(`${trackAPI}`);
-  if (error) console.error("Error:", responseError); // TODO: update error handling
+  if (error) console.error('Error:', responseError); // TODO: update error handling
   if (data.length < 10) playable = false;
   else {
-    data.forEach((track) => {
+    data.forEach(track => {
       if (track.preview) {
         tracks.push({
           title: track.title,

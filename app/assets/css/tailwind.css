@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 CSS Reset and Base Styles */
+@layer base {
+  html {
+    @apply text-base antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body {
+    @apply h-full m-0 p-0;
+  }
+
+  body {
+    @apply font-sans text-neutral-900 leading-normal;
+    text-rendering: optimizeSpeed;
+  }
+}
+
+#app {
+  @apply min-h-full flex flex-col;
+}
+
+.app {
+  @apply min-h-dvh flex-grow;
+  background: #000 url('../img/background.webp') no-repeat fixed center;
+  background-size: cover;
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  font-family: 'VT323', monospace;
+  background-color: #000;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgb(255 255 255 / 0.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.modal-mask {
+  @apply fixed inset-0 z-[9998] w-full h-full bg-black/75 transition-opacity duration-300 ease-in-out;
+}
+
+.modal-wrapper {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.modal-container {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.modal-enter-from {
+  @apply opacity-0;
+}
+
+.modal-leave-to {
+  @apply opacity-0;
+}
+
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  @apply scale-110;
+}
