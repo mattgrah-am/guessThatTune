@@ -1,30 +1,20 @@
-const eslint = require('@typescript-eslint/eslint-plugin');
-const parser = require('@typescript-eslint/parser');
-const prettier = require('eslint-plugin-prettier');
+// @ts-check
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat';
+import prettier from 'eslint-config-prettier';
 
-module.exports = [
+export default createConfigForNuxt({
+  features: {
+    tooling: true,
+    stylistic: false,
+  },
+}).append(
   {
-    files: ['**/*.{js,ts,vue}'],
-    languageOptions: {
-      parser: parser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      '@typescript-eslint': eslint,
-      prettier: prettier,
-    },
     rules: {
-      'prettier/prettier': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': 'warn',
       'no-debugger': 'warn',
     },
   },
-];
+  prettier
+);

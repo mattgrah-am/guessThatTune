@@ -22,6 +22,6 @@ export default defineEventHandler(async event => {
     data: DeezerArtistData[];
     error: string;
   }>(`${deezerSearchApi}${searchParams}&limit=4`);
-  if (error) console.error('Error:', error); // TODO: update error handling
+  if (error) console.error('Error:', error); // eslint-disable-line no-console -- TODO: update error handling
   return data;
 });

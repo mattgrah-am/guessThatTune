@@ -2,12 +2,12 @@
   <div>
     <div class="group relative z-0 mt-6 mb-8 w-full">
       <input
+        v-model="artistInput"
         name="artistInput"
         type="text"
         class="peer block w-full appearance-none rounded-lg border-2 border-neutral-400 bg-transparent py-2.5 px-2 text-base text-neutral-900 shadow-inner focus:border-neutral-600 focus:outline-none focus:ring-0"
         placeholder=" "
         required
-        v-model="artistInput"
         @input="handleChange"
       />
       <label
@@ -18,9 +18,14 @@
       <div v-if="loading">
         <LoadingIcon />
       </div>
-      <div v-show="isLoaded" v-for="artist in store.artistList">
+      <div
+        v-for="artist in store.artistList"
+        v-show="isLoaded"
+        :key="artist.name"
+      >
         <div
           v-show="isLoaded"
+          :key="artist.name"
           class="my-2 flex cursor-pointer items-center gap-4 rounded-lg border border-neutral-400 bg-neutral-100/70 hover:bg-transparent md:hover:bg-neutral-400/50"
           @click="
             () => {
@@ -28,7 +33,6 @@
               store.artistImg = artist.picture;
             }
           "
-          :key="artist.name"
         >
           <img
             :src="artist.picture"
@@ -70,7 +74,7 @@ const handleChange = debounce(() => {
 }, 300); // 300ms debounce delay
 
 // Define the debounce function
-function debounce<F extends (...args: any[]) => any>(
+function debounce<F extends (...args: unknown[]) => unknown>(
   func: F,
   wait: number
 ): (...args: Parameters<F>) => void {

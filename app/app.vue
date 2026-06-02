@@ -26,6 +26,8 @@
           store.trackNumber !== 10
         "
       />
+
+      <div></div>
       <div class="mt-2 flex items-center justify-center text-xs">
         Created with 🖤 by&nbsp;
         <a
@@ -59,6 +61,7 @@
       </Teleport>
     </div>
   </div>
+  <button>test</button>
 </template>
 
 <script setup lang="ts">

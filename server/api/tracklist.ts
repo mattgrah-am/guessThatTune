@@ -34,13 +34,13 @@ export default defineEventHandler(async event => {
   const trackAPI = search.q;
   const artist = search.n;
   let playable = true;
-  let error = '';
-  const tracks: any = [];
+  const error = '';
+  const tracks: { title: string; cover: string; preview: string }[] = [];
   const { data, responseError } = await $fetch<{
     data: DeezerTrackData[];
     responseError: string;
   }>(`${trackAPI}`);
-  if (error) console.error('Error:', responseError); // TODO: update error handling
+  if (error) console.error('Error:', responseError); // eslint-disable-line no-console -- TODO: update error handling
   if (data.length < 10) playable = false;
   else {
     data.forEach(track => {

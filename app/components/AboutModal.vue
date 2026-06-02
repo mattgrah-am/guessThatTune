@@ -3,14 +3,14 @@
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
         <div
-          class="modal-container w-screen bg-neutral-100/90 p-4 shadow sm:w-[440px] sm:rounded-lg"
+          class="modal-container w-screen bg-neutral-100/90 p-4 shadow sm:w-110 sm:rounded-lg"
         >
           <h3
             class="header py-4 text-center text-5xl font-bold uppercase tracking-tight"
           >
             Guess that Tune!
           </h3>
-          <p class="text-sm">
+          <div class="text-sm">
             Originally created as part of
             <a
               href="https://generalassemb.ly/education/software-engineering-immersive-remote-flex"
@@ -22,22 +22,23 @@
             </a>
             course's final project using React, Express and Node JS, this
             project was overhauled and now uses&nbsp;
-            <span v-for="link in websiteLinks">
-              <a
-                class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
-                :href="link.url"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {{ link.name }},
-              </a>
-            </span>
+            <div>
+              <span v-for="(link, index) in websiteLinks" :key="index">
+                <a
+                  class="text-sm text-neutral-500 hover:underline hover:underline-offset-2"
+                  :href="link.url"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {{ link.name }}
+                </a>
+              </span>
+            </div>
             & the
             <a
               href="https://developers.deezer.com/"
               target="_blank"
               rel="noreferrer"
-              underline="hover"
             >
               <img
                 src="~/assets/img/deezer.png"
@@ -51,13 +52,12 @@
               href="https://github.com/mattgrah-am/guessThatTune"
               target="_blank"
               rel="noreferrer"
-              underline="hover"
               class="text-neutral-500 hover:underline hover:underline-offset-2"
             >
               Github
             </a>
             .
-          </p>
+          </div>
           <p class="pt-2 text-sm">
             The aim of the game is to allow the end user to search for a artist
             / band, which in turn generates a set of multiple choice questions
@@ -83,6 +83,7 @@ defineProps({
   show: Boolean,
 });
 
+defineEmits(['close']);
 const websiteLinks = [
   {
     name: 'Nuxt 3',
@@ -103,25 +104,6 @@ const websiteLinks = [
   {
     name: 'Cloudflare Pages',
     url: 'https://pages.cloudflare.com/',
-  },
-];
-
-const authorLinks = [
-  {
-    name: 'Website',
-    url: 'https://www.matg.dev',
-  },
-  {
-    name: 'Github',
-    url: 'https://github.com/mattgrah-am',
-  },
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/mattgrah_am',
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/mattgrah-am/',
   },
 ];
 </script>

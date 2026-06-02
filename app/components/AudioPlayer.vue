@@ -1,7 +1,7 @@
 <template>
   <audio
-    ref="player"
     :id="String(store.trackNumber)"
+    ref="player"
     controls
     class="hidden rounded-b-lg"
   >
@@ -31,16 +31,16 @@
       <PauseIcon v-if="!playStatus" />
     </button>
     <div class="flex items-center">
-      <button @click="muteAudio" class="pr-2">
+      <button class="pr-2" @click="muteAudio">
         <SpeakerIcon v-if="volumeStatus" />
         <MuteIcon v-if="!volumeStatus" />
       </button>
       <input
+        v-model="volume"
         class="m-2 h-1 w-24 appearance-none rounded-full bg-neutral-900"
         type="range"
         min="1"
         max="100"
-        v-model="volume"
         @change="volumeAdjust"
       />
     </div>
@@ -62,8 +62,13 @@ const props = defineProps<{
 }>();
 
 const toggleAudio = () => {
-  player.value?.paused ? player.value?.play() : player.value?.pause();
-  player.value?.paused ? (playStatus.value = true) : (playStatus.value = false);
+  if (player.value?.paused) {
+    player.value.play();
+    playStatus.value = true;
+  } else {
+    player.value?.pause();
+    playStatus.value = false;
+  }
 };
 
 const volumeAdjust = () => {
@@ -82,7 +87,9 @@ const muteAudio = () => {
     String(store.trackNumber)
   ) as HTMLAudioElement;
   audio.muted = !volumeStatus.value;
-  !volumeStatus.value ? (volume.value = 0) : (volume.value = currentVolume);
+
+  if (!volumeStatus.value) volume.value = 0;
+  else volume.value = currentVolume;
 };
 
 watchEffect(() => {

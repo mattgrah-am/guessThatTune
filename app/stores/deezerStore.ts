@@ -54,27 +54,27 @@ export const useDeezerStore = defineStore('counter', () => {
   const score = ref(0);
 
   const currentSong = computed(
-    () => gameTracks.value[trackNumber.value].preview
+    () => gameTracks.value[trackNumber.value]?.preview
   );
   const currentCover = computed(
-    () => gameTracks.value[trackNumber.value].cover
+    () => gameTracks.value[trackNumber.value]?.cover
   );
 
   const getArtistList = async (artist: string) => {
-    const { data, error } = await useFetch(`/api/search/?q=${artist}`);
-    if (error.value) console.error('Error:', error.value); // TODO: update error handling
-    artistList.value = data.value as ArtistLists[];
+    const { data, error } = await useFetch<ArtistLists[]>(`/api/search/?q=${artist}`);
+    if (error.value) console.error('Error:', error.value); // eslint-disable-line no-console -- TODO: update error handling
+    artistList.value = data.value ?? [];
   };
 
   const getTrackList = async (
     tracks: string | undefined,
     artist: string | undefined
   ) => {
-    const { data, error } = await useFetch(
+    const { data, error } = await useFetch<TrackList>(
       `/api/tracklist/?q=${tracks}&n=${artist}`
     );
-    if (error.value) console.error('Error:', error.value); // TODO: update error handling
-    tracklist.value = data.value as TrackList;
+    if (error.value) console.error('Error:', error.value); // eslint-disable-line no-console -- TODO: update error handling
+    if (data.value) tracklist.value = data.value;
     playableGame.value = tracklist.value.playable;
     const gameSongs: Tracks[] = [];
     const songs: string[] = [];
@@ -99,7 +99,7 @@ export const useDeezerStore = defineStore('counter', () => {
           songList.splice(songList.indexOf(track.title!), 1);
           while (track.songs.length < 4) {
             track.songs.push(
-              songList.splice(Math.floor(Math.random() * songList.length), 1)[0]
+              songList.splice(Math.floor(Math.random() * songList.length), 1)[0]!
             );
           }
           track.songs.sort(() => (Math.random() > 0.5 ? 1 : -1));
